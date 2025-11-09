@@ -49,5 +49,7 @@ pipeline {
         }}
         stage('Cleanup') {
             steps {
+                 sh "docker stop container || true"
+                 sh "docker rm container || true"
                 sh "docker rmi ${IMAGE_NAME}:${IMAGE_TAG} ${FULL_IMAGE} || true"
             }}}}
