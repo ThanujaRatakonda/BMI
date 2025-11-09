@@ -1,7 +1,7 @@
 pipeline {
      agent any
     environment {
-        IMAGE_NAME = "smartcalc"                 // Name of the Docker image.
+        IMAGE_NAME = "BMICAL"                 // Name of the Docker image.
         IMAGE_TAG = "${env.BUILD_NUMBER}"        // Use Jenkins build number as the Docker image tag.
         HARBOR_URL = "10.131.103.92:8090"        // URL for the Harbor registry.
         HARBOR_PROJECT = "BMI"     // Project name in Harbor registry.
