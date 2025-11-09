@@ -4,7 +4,7 @@ pipeline {
         IMAGE_NAME = "BMICAL"                 // Name of the Docker image.
         IMAGE_TAG = "${env.BUILD_NUMBER}"        // Use Jenkins build number as the Docker image tag.
         HARBOR_URL = "10.131.103.92:8090"        // URL for the Harbor registry.
-        HARBOR_PROJECT = "BMI"     // Project name in Harbor registry.
+        HARBOR_PROJECT = "bmi"     // Project name in Harbor registry.
         FULL_IMAGE = "${HARBOR_URL}/${HARBOR_PROJECT}/${IMAGE_NAME}:${IMAGE_TAG}" // Full image path with tag.
         TRIVY_OUTPUT_JSON = "trivy-output.json"  // File path for storing the JSON output from Trivy
     }
