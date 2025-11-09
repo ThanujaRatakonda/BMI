@@ -7,7 +7,7 @@ pipeline {
         HARBOR_PROJECT = "bmi"     // Project name in Harbor registry.
         FULL_IMAGE = "${HARBOR_URL}/${HARBOR_PROJECT}/${IMAGE_NAME}:${IMAGE_TAG}" // Full image path with tag.
         TRIVY_OUTPUT_JSON = "trivy-output.json"  // File path for storing the JSON output from Trivy
-        CONTAINER_NAME = "${env.BUILD_NUMBER}"
+        CONTAINER_NAME = "bmi-${env.BUILD_NUMBER}"
     }
     stages {
         stage('Checkout') {
