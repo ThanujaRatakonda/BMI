@@ -7,6 +7,7 @@ pipeline {
         HARBOR_PROJECT = "bmi"     // Project name in Harbor registry.
         FULL_IMAGE = "${HARBOR_URL}/${HARBOR_PROJECT}/${IMAGE_NAME}:${IMAGE_TAG}" // Full image path with tag.
         TRIVY_OUTPUT_JSON = "trivy-output.json"  // File path for storing the JSON output from Trivy
+        CONTAINER_NAME = "${env.BUILD_NUMBER}"
     }
     stages {
         stage('Checkout') {
@@ -45,11 +46,9 @@ pipeline {
                 }}}
    stage('Run Docker Container') {
         steps {
-            sh "docker run -d -p 3000:80 ${IMAGE_NAME}:${IMAGE_TAG}"
+          sh "docker run -d --name ${CONTAINER_NAME} -p 3000:80 ${IMAGE_NAME}:${IMAGE_TAG}"
         }}
         stage('Cleanup') {
             steps {
-                 sh "docker stop container || true"
-                 sh "docker rm container || true"
                 sh "docker rmi ${IMAGE_NAME}:${IMAGE_TAG} ${FULL_IMAGE} || true"
             }}}}
