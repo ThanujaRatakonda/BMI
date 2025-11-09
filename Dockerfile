@@ -7,6 +7,6 @@ RUN pip install -r requirements.txt
 
 COPY app.py .
 
-EXPOSE 80
+EXPOSE 3000
 
 CMD ["python", "app.py"]
