@@ -46,7 +46,7 @@ pipeline {
                 }}}
    stage('Run Docker Container') {
         steps {
-          sh "docker run -d --name ${CONTAINER_NAME} -p 3000:80 ${IMAGE_NAME}:${IMAGE_TAG}"
+          sh "docker run -d --name ${CONTAINER_NAME} -p 3000:3000 ${IMAGE_NAME}:${IMAGE_TAG}"
         }}
         stage('Cleanup') {
             steps {
