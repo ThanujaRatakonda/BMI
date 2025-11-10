@@ -49,5 +49,7 @@ pipeline {
         }}
         stage('Cleanup') {
             steps {
+                 sh "docker stop \$(docker ps -q --filter 'ancestor=${IMAGE_NAME}:${IMAGE_TAG}') || true"
+                 sh "docker rm \$(docker ps -aq --filter 'ancestor=${IMAGE_NAME}:${IMAGE_TAG}') || true"
                 sh "docker rmi ${IMAGE_NAME}:${IMAGE_TAG} ${FULL_IMAGE} || true"
             }}}}
