@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/ThanujaRatakonda/simplecalculation.git'
+                git 'https://github.com/ThanujaRatakonda/BMI.git'
             }}
     stage('Build Docker Image') {
             steps {
