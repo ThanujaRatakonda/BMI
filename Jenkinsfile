@@ -47,6 +47,7 @@ pipeline {
         steps {
             sh "docker ps -q --filter 'publish=3000' | xargs -r docker stop"
             sh "docker ps -aq --filter 'publish=3000' | xargs -r docker rm"
+             sh "docker ps -a"
           sh "docker run -d -p 3000:3000 ${IMAGE_NAME}:${IMAGE_TAG}"
         }}
         stage('Cleanup') {
