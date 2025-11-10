@@ -15,7 +15,7 @@ pipeline {
             }}
     stage('Build Docker Image') {
             steps {
-                sh "docker build --no-cache -t ${IMAGE_NAME}:${IMAGE_TAG} ."
+                 sh "docker run -d -p 3000:3000 ${IMAGE_NAME}:${IMAGE_TAG}"
             }}
    stage('Trivy Scan') {
             steps {
