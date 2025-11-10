@@ -5,7 +5,7 @@ app = Flask(__name__)
 @app.route('/')
 def home():
     return '''
-    <h2>BMI Calculator</h2>
+    <h2>BMI Calculator!!!</h2>
     <form action="/bmi" method="get">
         Height (m): <input type="text" name="height"><br><br>
         Weight (kg): <input type="text" name="weight"><br><br>
