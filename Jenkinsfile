@@ -45,9 +45,8 @@ pipeline {
                 }}}
    stage('Run Docker Container') {
         steps {
-             sh "docker ps  --filter ancestor=${IMAGE_NAME}:${IMAGE_TAG}  'publish=3000' -q| xargs -r docker stop || true "
-        sh "docker ps  --filter ancestor=${IMAGE_NAME}:${IMAGE_TAG} 'publish=3000' -aq | xargs -r docker rm || true "
-
+            docker ps -q --filter 'publish=3000' | xargs -r docker stop
+            docker ps -aq --filter 'publish=3000' | xargs -r docker rm
           sh "docker run -d -p 3000:3000 ${IMAGE_NAME}:${IMAGE_TAG}"
         }}
         stage('Cleanup') {
